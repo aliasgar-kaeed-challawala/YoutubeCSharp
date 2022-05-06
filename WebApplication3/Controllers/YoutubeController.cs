@@ -1,6 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebApplication3.Data;
 using WebApplication3.Models;
 
@@ -12,42 +16,97 @@ namespace WebApplication3.Controllers
     [ApiController]
     public class YoutubeController : ControllerBase
     {
-        protected ApplicationDbContext _db;
+        private readonly ApplicationDbContext _context;
 
-        public YoutubeController(ApplicationDbContext db)
+        public YoutubeController(ApplicationDbContext context)
         {
-            _db = db;
+            _context = context;
         }
-        // GET: api/<YoutubeController>
+
+        // GET: api/Youtube
         [HttpGet]
-        public IEnumerable<Youtube> Get()
+        public async Task<ActionResult<IEnumerable<Youtube>>> GetYoutube()
         {
-            return _db.Youtube.ToList().AsEnumerable();
+            return await _context.Youtube.ToListAsync();
         }
 
-        // GET api/<YoutubeController>/5
+        // GET: api/Youtube/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<Youtube>> GetYoutube(int id)
         {
-            return "value";
+            var youtube = await _context.Youtube.FindAsync(id);
+
+            if (youtube == null)
+            {
+                return NotFound();
+            }
+
+            return youtube;
         }
 
-        // POST api/<YoutubeController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<YoutubeController>/5
+        // PUT: api/Youtube/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> PutYoutube(int id, Youtube youtube)
         {
+            if (id != youtube.Id)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(youtube).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!YoutubeExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
         }
 
-        // DELETE api/<YoutubeController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        // POST: api/Youtube
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for
+        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
+        [HttpPost]
+        public async Task<ActionResult<Youtube>> PostYoutube(Youtube youtube)
         {
+            _context.Youtube.Add(youtube);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction("GetYoutube", new { id = youtube.Id }, youtube);
+        }
+
+        // DELETE: api/Youtube/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Youtube>> DeleteYoutube(int id)
+        {
+            var youtube = await _context.Youtube.FindAsync(id);
+            if (youtube == null)
+            {
+                return NotFound();
+            }
+
+            _context.Youtube.Remove(youtube);
+            await _context.SaveChangesAsync();
+
+            return youtube;
+        }
+
+        private bool YoutubeExists(int id)
+        {
+            return _context.Youtube.Any(e => e.Id == id);
         }
     }
 }
