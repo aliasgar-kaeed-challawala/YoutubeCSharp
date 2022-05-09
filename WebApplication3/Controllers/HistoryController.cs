@@ -23,10 +23,13 @@ namespace WebApplication3.Controllers
 
         // GET: api/History
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<History>>> GetHistory(User User)
+        public async Task<ActionResult<IEnumerable<History>>> GetHistory()
         {
-            // get history with video and user where user id is the same as the user id in the history
-            var history = await _context.History.Include(h => h.Video).Include(h => h.User).Where(h => h.User.UserId == User.UserId).ToListAsync();
+            //get user id from url parameter and set it to a variable
+            string userId = Request.Query["userId"];
+            // get history with user id and video and its user detail
+            var history = await _context.History.Where(h => h.User.UserId == userId).Include(h => h.Video).Include(h => h.User).Include(h => h.Video.User).ToListAsync();
+
             return history;
         }
 
