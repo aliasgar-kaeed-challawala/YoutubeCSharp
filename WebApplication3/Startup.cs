@@ -34,7 +34,7 @@ namespace WebApplication3
                     Configuration.GetConnectionString("DefaultConnection")));
 
 
-        
+
             services.AddAuthentication(AzureADDefaults.BearerAuthenticationScheme)
                 .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
             services.AddControllers();
