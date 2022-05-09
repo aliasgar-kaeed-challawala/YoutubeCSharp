@@ -39,11 +39,9 @@ namespace WebApplication3
                 .AddAzureADBearer(options => Configuration.Bind("AzureAd", options));
             services.AddControllers();
 
-            services.AddCors(options =>
-            {
-                options.AddDefaultPolicy(
-                    builder => builder.AllowAnyOrigin()
-                    );
+            services.AddCors(options => {
+                options.AddPolicy("AllowMyOrigin",
+                builder => builder.WithOrigins("*").WithMethods("*").AllowAnyMethod().AllowAnyHeader());
             });
         }
 
@@ -59,7 +57,7 @@ namespace WebApplication3
 
             app.UseRouting();
 
-            app.UseCors();
+            app.UseCors("AllowMyOrigin");
 
             app.UseAuthentication();
             app.UseAuthorization();

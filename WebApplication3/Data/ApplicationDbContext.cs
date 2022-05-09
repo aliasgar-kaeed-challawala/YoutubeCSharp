@@ -11,5 +11,6 @@ namespace WebApplication3.Data
         public DbSet<Youtube> Youtube { get; set; }
         public DbSet<Video> Videos { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<History> History { get; set; }
     }
 }
