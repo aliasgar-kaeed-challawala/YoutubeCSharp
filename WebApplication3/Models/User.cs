@@ -10,8 +10,5 @@ namespace WebApplication3.Models
         public string UserName { get; set; }
         public string ProfileImg { get; set; }
 
-        [ForeignKey("Channel")]
-        public string ChannelId { get; set; }
-        public virtual Channel Channel { get; set; }
     }
 }
