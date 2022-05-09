@@ -80,6 +80,12 @@ namespace WebApplication3.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
+            var tempUser = await _context.Users.Where(x => x.Email == user.Email).FirstOrDefaultAsync();
+            if (tempUser != null)
+            {
+                return CreatedAtAction("GetUser", new { id = tempUser.UserId }, tempUser);
+            }
+            user.UserId = Guid.NewGuid().ToString();
             _context.Users.Add(user);
             try
             {
@@ -116,9 +122,10 @@ namespace WebApplication3.Controllers
             return user;
         }
 
-        private bool UserExists(string id)
+        private bool UserExists(string email)
         {
-            return _context.Users.Any(e => e.UserId == id);
+            return _context.Users.Any(e => e.Email == email);
         }
+
     }
 }
