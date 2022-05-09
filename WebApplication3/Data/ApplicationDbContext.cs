@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-
+using WebApplication3.Models;
 namespace WebApplication3.Data
 {
     public class ApplicationDbContext : DbContext
@@ -8,7 +8,10 @@ namespace WebApplication3.Data
             : base(options)
         {
         }
-        public DbSet<WebApplication3.Models.Youtube> Youtube { get; set; }
+        public DbSet<Youtube> Youtube { get; set; }
+        public DbSet<Video> Videos { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Channel> Channels { get; set; }
 
     }
 }
