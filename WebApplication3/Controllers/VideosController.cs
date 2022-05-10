@@ -25,14 +25,14 @@ namespace WebApplication3.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Video>>> GetVideos()
         {
-            return await _context.Videos.ToListAsync();
+            return await _context.Videos.Include(f => f.User).ToListAsync();
         }
 
         // GET: api/Videos/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Video>> GetVideo(string id)
         {
-            var video = await _context.Videos.FindAsync(id);
+            var video = await _context.Videos.Where(p => p.VideoId == id).Include(f => f.User).FirstOrDefaultAsync();
 
             if (video == null)
             {

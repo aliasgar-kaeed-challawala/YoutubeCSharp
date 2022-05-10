@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplication3.Data;
 
 namespace WebApplication3.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220510052805_update-seeding")]
+    partial class updateseeding
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -115,7 +117,7 @@ namespace WebApplication3.Migrations
                         new
                         {
                             VideoId = "Y2Oj9gllHno",
-                            ImageUrl = "https://i.ytimg.com/vi/Y2Oj9gllHno/hqdefault.jpg",
+                            ImageUrl = "https://i.ytimg.com/vi/Y2Oj9gllHno/hqdefault.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDNsiucDjYGTBJqLj4o_3DztII1DA",
                             Likes = "714K",
                             Title = "I am a Chef | Aakash Gupta | Stand-Up Comedy | Crowd Work",
                             UserId = "1",
@@ -124,7 +126,7 @@ namespace WebApplication3.Migrations
                         new
                         {
                             VideoId = "dwapUG-XFKs",
-                            ImageUrl = "https://i.ytimg.com/vi/dwapUG-XFKs/hqdefault.jpg",
+                            ImageUrl = "https://i.ytimg.com/an_webp/dwapUG-XFKs/mqdefault_6s.webp?du=3000&sqp=CLbK45MG&rs=AOn4CLDnmPuZ-mxk0f8dk6QgDmNxNnqqpw",
                             Likes = "1K",
                             Title = "Shell profits nearly triple as oil prices surge amid Russia-Ukraine war – BBC News",
                             UserId = "2",
@@ -133,7 +135,7 @@ namespace WebApplication3.Migrations
                         new
                         {
                             VideoId = "ZQ4E0JJcxz0",
-                            ImageUrl = "https://i.ytimg.com/vi/ZQ4E0JJcxz0/hqdefault.jpg",
+                            ImageUrl = "https://i.ytimg.com/an_webp/ZQ4E0JJcxz0/mqdefault_6s.webp?du=3000&sqp=CLvx45MG&rs=AOn4CLDfQBMcU_wo27tbM70zq8qQRfN2wQ",
                             Likes = "133K",
                             Title = "What Happens When the iPhone Peaks ? ",
                             UserId = "3",
@@ -142,7 +144,7 @@ namespace WebApplication3.Migrations
                         new
                         {
                             VideoId = "yoigsHYc77s",
-                            ImageUrl = "https://i.ytimg.com/vi/yoigsHYc77s/hqdefault.jpg",
+                            ImageUrl = "https://i.ytimg.com/an_webp/yoigsHYc77s/mqdefault_6s.webp?du=3000&sqp=CJX145MG&rs=AOn4CLAM3oTGAdO5HlrygRYrGMPUkh3QaA",
                             Likes = "131K",
                             Title = "The Apple Studio Display is a Bad Deal",
                             UserId = "3",
@@ -151,7 +153,7 @@ namespace WebApplication3.Migrations
                         new
                         {
                             VideoId = "vXIAB_1FEC0",
-                            ImageUrl = "https://i.ytimg.com/vi/vXIAB_1FEC0/hqdefault.jpg",
+                            ImageUrl = "https://i.ytimg.com/an_webp/vXIAB_1FEC0/mqdefault_6s.webp?du=3000&sqp=CI-I5JMG&rs=AOn4CLDFLGrltM2MHWaWsI2NlGaCYLQORg",
                             Likes = "122K",
                             Title = "Galaxy S22 Ultra Review: Separating from the Pack!",
                             UserId = "1",
@@ -160,7 +162,7 @@ namespace WebApplication3.Migrations
                         new
                         {
                             VideoId = "bQY07sHbF2w",
-                            ImageUrl = "https://i.ytimg.com/vi/bQY07sHbF2w/hqdefault.jpg",
+                            ImageUrl = "https://i.ytimg.com/an_webp/bQY07sHbF2w/mqdefault_6s.webp?du=3000&sqp=CNDy45MG&rs=AOn4CLDGFhdftIkPhVfwiw5abcCYC1TrGg",
                             Likes = "600",
                             Title = "Real Madrid to face Liverpool in Champions League final as comeback stuns Man City - BBC News",
                             UserId = "2",
@@ -169,7 +171,7 @@ namespace WebApplication3.Migrations
                         new
                         {
                             VideoId = "VCJZVtKIwrU",
-                            ImageUrl = "https://i.ytimg.com/vi/VCJZVtKIwrU/hqdefault.jpg",
+                            ImageUrl = "https://i.ytimg.com/an_webp/VCJZVtKIwrU/mqdefault_6s.webp?du=3000&sqp=CPGL5JMG&rs=AOn4CLCmdG7yWfWpFenjjSYCRbmNlE40Dg",
                             Likes = "16K",
                             Title = "Russia's flagship warship the Moskva has sunk – BBC News",
                             UserId = "2",
