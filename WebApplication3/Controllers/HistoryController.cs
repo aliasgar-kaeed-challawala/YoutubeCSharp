@@ -84,7 +84,9 @@ namespace WebApplication3.Controllers
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
         public async Task<ActionResult<History>> PostHistory(History history)
-        {
+        {          
+            // modified_at 
+            history.ModifiedAt = DateTime.Now;
             _context.History.Add(history);
             try
             {

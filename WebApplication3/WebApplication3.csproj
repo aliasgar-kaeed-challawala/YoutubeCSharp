@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Migrations\20220510035617_update_historyid.cs" />
+    <Compile Remove="Migrations\20220510035617_update_historyid.Designer.cs" />
+    <Compile Remove="Migrations\20220510043108_history-update.cs" />
+    <Compile Remove="Migrations\20220510043108_history-update.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.AzureAD.UI" Version="3.1.24" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.24" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.24" />
