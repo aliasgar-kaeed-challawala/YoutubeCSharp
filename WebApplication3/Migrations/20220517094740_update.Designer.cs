@@ -2,7 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplication3.Data;
@@ -10,31 +9,30 @@ using WebApplication3.Data;
 namespace WebApplication3.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220510052805_update-seeding")]
-    partial class updateseeding
+    [Migration("20220517094740_update")]
+    partial class update
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "3.1.24")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
             modelBuilder.Entity("WebApplication3.Models.History", b =>
                 {
                     b.Property<string>("HistoryId")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<DateTime>("ModifiedAt")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<string>("VideoId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.HasKey("HistoryId");
 
@@ -48,16 +46,16 @@ namespace WebApplication3.Migrations
             modelBuilder.Entity("WebApplication3.Models.User", b =>
                 {
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("ProfileImg")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("UserId");
 
@@ -90,22 +88,22 @@ namespace WebApplication3.Migrations
             modelBuilder.Entity("WebApplication3.Models.Video", b =>
                 {
                     b.Property<string>("VideoId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Likes")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                        .HasColumnType("varchar(255) CHARACTER SET utf8mb4");
 
                     b.Property<string>("Views")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("VideoId");
 
@@ -117,7 +115,7 @@ namespace WebApplication3.Migrations
                         new
                         {
                             VideoId = "Y2Oj9gllHno",
-                            ImageUrl = "https://i.ytimg.com/vi/Y2Oj9gllHno/hqdefault.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLDNsiucDjYGTBJqLj4o_3DztII1DA",
+                            ImageUrl = "https://i.ytimg.com/vi/Y2Oj9gllHno/hqdefault.jpg",
                             Likes = "714K",
                             Title = "I am a Chef | Aakash Gupta | Stand-Up Comedy | Crowd Work",
                             UserId = "1",
@@ -126,7 +124,7 @@ namespace WebApplication3.Migrations
                         new
                         {
                             VideoId = "dwapUG-XFKs",
-                            ImageUrl = "https://i.ytimg.com/an_webp/dwapUG-XFKs/mqdefault_6s.webp?du=3000&sqp=CLbK45MG&rs=AOn4CLDnmPuZ-mxk0f8dk6QgDmNxNnqqpw",
+                            ImageUrl = "https://i.ytimg.com/vi/dwapUG-XFKs/hqdefault.jpg",
                             Likes = "1K",
                             Title = "Shell profits nearly triple as oil prices surge amid Russia-Ukraine war – BBC News",
                             UserId = "2",
@@ -135,7 +133,7 @@ namespace WebApplication3.Migrations
                         new
                         {
                             VideoId = "ZQ4E0JJcxz0",
-                            ImageUrl = "https://i.ytimg.com/an_webp/ZQ4E0JJcxz0/mqdefault_6s.webp?du=3000&sqp=CLvx45MG&rs=AOn4CLDfQBMcU_wo27tbM70zq8qQRfN2wQ",
+                            ImageUrl = "https://i.ytimg.com/vi/ZQ4E0JJcxz0/hqdefault.jpg",
                             Likes = "133K",
                             Title = "What Happens When the iPhone Peaks ? ",
                             UserId = "3",
@@ -144,7 +142,7 @@ namespace WebApplication3.Migrations
                         new
                         {
                             VideoId = "yoigsHYc77s",
-                            ImageUrl = "https://i.ytimg.com/an_webp/yoigsHYc77s/mqdefault_6s.webp?du=3000&sqp=CJX145MG&rs=AOn4CLAM3oTGAdO5HlrygRYrGMPUkh3QaA",
+                            ImageUrl = "https://i.ytimg.com/vi/yoigsHYc77s/hqdefault.jpg",
                             Likes = "131K",
                             Title = "The Apple Studio Display is a Bad Deal",
                             UserId = "3",
@@ -153,7 +151,7 @@ namespace WebApplication3.Migrations
                         new
                         {
                             VideoId = "vXIAB_1FEC0",
-                            ImageUrl = "https://i.ytimg.com/an_webp/vXIAB_1FEC0/mqdefault_6s.webp?du=3000&sqp=CI-I5JMG&rs=AOn4CLDFLGrltM2MHWaWsI2NlGaCYLQORg",
+                            ImageUrl = "https://i.ytimg.com/vi/vXIAB_1FEC0/hqdefault.jpg",
                             Likes = "122K",
                             Title = "Galaxy S22 Ultra Review: Separating from the Pack!",
                             UserId = "1",
@@ -162,7 +160,7 @@ namespace WebApplication3.Migrations
                         new
                         {
                             VideoId = "bQY07sHbF2w",
-                            ImageUrl = "https://i.ytimg.com/an_webp/bQY07sHbF2w/mqdefault_6s.webp?du=3000&sqp=CNDy45MG&rs=AOn4CLDGFhdftIkPhVfwiw5abcCYC1TrGg",
+                            ImageUrl = "https://i.ytimg.com/vi/bQY07sHbF2w/hqdefault.jpg",
                             Likes = "600",
                             Title = "Real Madrid to face Liverpool in Champions League final as comeback stuns Man City - BBC News",
                             UserId = "2",
@@ -171,7 +169,7 @@ namespace WebApplication3.Migrations
                         new
                         {
                             VideoId = "VCJZVtKIwrU",
-                            ImageUrl = "https://i.ytimg.com/an_webp/VCJZVtKIwrU/mqdefault_6s.webp?du=3000&sqp=CPGL5JMG&rs=AOn4CLCmdG7yWfWpFenjjSYCRbmNlE40Dg",
+                            ImageUrl = "https://i.ytimg.com/vi/VCJZVtKIwrU/hqdefault.jpg",
                             Likes = "16K",
                             Title = "Russia's flagship warship the Moskva has sunk – BBC News",
                             UserId = "2",
@@ -183,26 +181,25 @@ namespace WebApplication3.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("int");
 
                     b.Property<string>("ChannelTitle")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("ImageUrl")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Title")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("UploadedAt")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("VideoId")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.Property<string>("Views")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("longtext CHARACTER SET utf8mb4");
 
                     b.HasKey("Id");
 
